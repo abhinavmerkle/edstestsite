@@ -1,37 +1,85 @@
+/* Block: hero-banner -- full-width CTA banner with background image and dark overlay */
+
+/* Full-width wrapper override */
 .hero-banner-container .hero-banner-wrapper {
   max-width: unset;
   padding: 0;
 }
 
+/* Section-level: dark background + spacing matches source section */
+.hero-banner-container {
+  background-color: rgb(0 0 0);
+  padding: 80px 0;
+}
+
+@media (width >= 900px) {
+  .hero-banner-container {
+    padding: 128px 0;
+  }
+}
+
+/* Block root: the card container */
 .hero-banner {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
-}
-
-.hero-banner h1,
-.hero-banner h2,
-.hero-banner h3,
-.hero-banner h4,
-.hero-banner h5,
-.hero-banner h6,
-.hero-banner p {
+  display: flex;
+  align-items: flex-end;
+  min-height: 360px;
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
-}
-
-.hero-banner.no-image * {
-  color: var(--text-color);
-}
-
-.hero-banner picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
+  margin: 0 auto;
+  padding: 0 24px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: rgb(0 0 0);
+  color: rgb(255 255 255);
   box-sizing: border-box;
+}
+
+@media (width >= 900px) {
+  .hero-banner {
+    min-height: 448px;
+    padding: 0 24px;
+  }
+}
+
+/* Dark gradient overlay via ::after */
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to top, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 0%) 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Row 2: content row -- positioned over image and overlay */
+.hero-banner > div:last-child {
+  position: relative;
+  z-index: 2;
+  padding: 40px 24px;
+  max-width: 672px;
+}
+
+@media (width >= 900px) {
+  .hero-banner > div:last-child {
+    padding: 64px;
+  }
+}
+
+/* Row 1: image row -- position absolutely to fill the card */
+.hero-banner > div:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-banner > div:first-child > div {
+  height: 100%;
+}
+
+/* Background image: fills the card, cover fit */
+.hero-banner picture {
+  display: block;
+  height: 100%;
 }
 
 .hero-banner img {
@@ -40,8 +88,87 @@
   height: 100%;
 }
 
+/* Headings: white, large, Syncopate uppercase */
+.hero-banner h2 {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: var(--heading-font-family);
+  line-height: 1.1;
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+  color: rgb(255 255 255);
+  margin: 0;
+}
+
 @media (width >= 900px) {
-  .hero-banner {
-    padding: 40px 32px;
+  .hero-banner h2 {
+    font-size: 56px;
+    line-height: 61.6px;
   }
+}
+
+/* Description paragraph */
+.hero-banner p {
+  font-size: var(--body-font-size-m);
+  font-family: var(--body-font-family);
+  line-height: 28.8px;
+  color: rgb(255 255 255);
+  margin: 16px 0 0;
+}
+
+/* CTA link (not auto-decorated as .button by EDS) */
+.hero-banner p:last-child {
+  margin-top: 24px;
+}
+
+.hero-banner a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255 255 255);
+  color: rgb(0 0 0);
+  padding: 12px 24px;
+  border: 2px solid rgb(255 255 255);
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--body-font-family);
+  line-height: 22.4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.hero-banner a:hover {
+  background-color: transparent;
+  color: rgb(255 255 255);
+  border-color: rgb(255 255 255);
+  text-decoration: none;
+}
+
+/* Also handle if EDS does decorate the link as .button */
+main .hero-banner a.button:any-link {
+  background-color: rgb(255 255 255);
+  color: rgb(0 0 0);
+  padding: 12px 24px;
+  border: 2px solid rgb(255 255 255);
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+main .hero-banner a.button:hover {
+  background-color: transparent;
+  color: rgb(255 255 255);
+  border-color: rgb(255 255 255);
+}
+
+/* No-image variant fallback */
+.hero-banner.no-image {
+  background-color: var(--dark-color);
+}
+
+.hero-banner.no-image::after {
+  display: none;
 }

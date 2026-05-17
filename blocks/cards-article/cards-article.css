@@ -1,27 +1,114 @@
+/* Block: cards-article -- styled from source computed styles */
+
+/* Card grid - mobile first (single column) */
 .cards-article > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
+/* Card item (li) - the card link wrapper equivalent */
 .cards-article > ul > li {
-  border: 1px solid #dadada;
+  border: 1px solid rgb(232 232 232);
+  border-radius: 20px;
+  overflow: hidden;
   background-color: var(--background-color);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.cards-article .cards-article-card-body {
-  margin: 16px;
+.cards-article > ul > li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
 }
 
+/* Card image container */
 .cards-article .cards-article-card-image {
   line-height: 0;
+  overflow: hidden;
 }
 
+/* Card image - aspect ratio ~1.60 (274/171.25) */
 .cards-article > ul > li img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
+  display: block;
+}
+
+/* General paragraph reset within card body */
+.cards-article .cards-article-card-body p {
+  font-family: var(--body-font-family);
+  line-height: 1.4;
+}
+
+/* Card body / content area */
+.cards-article .cards-article-card-body {
+  padding: 24px;
+}
+
+/* Meta row: category tag + date */
+.cards-article .cards-article-card-body > p:first-child {
+  display: inline-block;
+  background-color: rgb(244 254 139);
+  color: var(--text-color);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Date text */
+.cards-article .cards-article-card-body > p:nth-child(2) {
+  display: inline-block;
+  font-size: 14px;
+  color: rgb(102 102 102);
+  font-weight: 400;
+  margin: 0 0 0 12px;
+  vertical-align: middle;
+}
+
+/* H3 title */
+.cards-article h3 {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: var(--heading-font-family);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin: 12px 0 0;
+}
+
+/* Link paragraph - hide the redundant link text */
+.cards-article .cards-article-card-body > p:last-child {
+  margin: 0;
+}
+
+.cards-article .cards-article-card-body > p:last-child a {
+  display: none;
+}
+
+/* Override EDS button styles for card links */
+.cards-article .cards-article-card-body .button-wrapper {
+  display: none;
+}
+
+/* Desktop: 2 columns at 600px */
+@media (width >= 600px) {
+  .cards-article > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 4 columns at 900px */
+@media (width >= 900px) {
+  .cards-article > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

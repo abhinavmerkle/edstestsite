@@ -1,47 +1,167 @@
-.hero-homepage-container .hero-homepage-wrapper {
-  max-width: unset;
-  padding: 0;
+/* Block: hero-homepage -- two-column hero with text + image grid */
+
+/* Extracted values from source: wknd-trendsetters.site */
+
+/* Full-width wrapper override -- section background spans full width */
+.hero-homepage-wrapper {
+  max-width: 100% !important;
+  padding: 0 !important;
 }
 
+/* Section padding override: extracted 128px top/bottom from source */
+.section.hero-homepage-container {
+  padding: 128px 0;
+}
+
+/* Block container -- constrain content width */
 .hero-homepage {
   position: relative;
   padding: 40px 24px;
-  min-height: 300px;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
 }
 
-.hero-homepage h1,
-.hero-homepage h2,
-.hero-homepage h3,
-.hero-homepage h4,
-.hero-homepage h5,
-.hero-homepage h6,
-.hero-homepage p {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+/* Rows stack on mobile */
+.hero-homepage > div {
+  margin-bottom: 32px;
 }
 
-.hero-homepage.no-image * {
+.hero-homepage > div:last-child {
+  margin-bottom: 0;
+}
+
+/* === H1 heading === */
+
+/* Extracted: font-size: 56px, font-weight: 700, line-height: 61.6px, letter-spacing: -1.12px */
+.hero-homepage h1 {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: var(--heading-font-family);
+  line-height: 1.1;
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* === Description paragraph === */
+
+/* Extracted: font-size: 18px, line-height: 28.8px, margin-top: 24px */
+.hero-homepage > div:last-child p {
+  font-size: var(--body-font-size-m);
+  font-family: var(--body-font-family);
+  line-height: 1.6;
   color: var(--text-color);
 }
 
+/* === Button wrappers === */
+
+/* Extracted: button-group display: flex, gap: 16px, margin-top: 32px */
+.hero-homepage p.button-wrapper {
+  display: inline-block;
+  margin: 32px 16px 0 0;
+}
+
+/* === Primary button (See case) === */
+
+/* Extracted: bg: rgb(0,0,0), color: rgb(255,255,255), padding: 12px 24px,
+   border: 2px solid rgb(0,0,0), border-radius: 9999px, font-size: 14px, font-weight: 600 */
+.hero-homepage a.button.primary:any-link {
+  background-color: var(--text-color);
+  color: var(--background-color);
+  padding: 12px 24px;
+  border: 2px solid var(--text-color);
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--body-font-family);
+  text-decoration: none;
+}
+
+/* === Secondary button (All stories) === */
+
+/* Extracted: bg: rgb(255,255,255), color: rgb(0,0,0), padding: 12px 24px,
+   border: 2px solid rgb(0,0,0), border-radius: 9999px, font-size: 14px, font-weight: 600 */
+.hero-homepage a.button.secondary:any-link {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 12px 24px;
+  border: 2px solid var(--text-color);
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--body-font-family);
+  text-decoration: none;
+}
+
+/* === Images === */
+
+/* Extracted: object-fit: cover, border-radius: 20px */
 .hero-homepage picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+  display: block;
 }
 
 .hero-homepage img {
   object-fit: cover;
+  border-radius: 20px;
   width: 100%;
-  height: 100%;
+  height: 200px;
 }
 
+/* Images cell: stack vertically on mobile with grid */
+
+/* Extracted gap: 8px between images */
+.hero-homepage > div:first-child > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+/* EDS wraps bare images in a <p> tag -- use display:contents to flatten */
+.hero-homepage > div:first-child > div > p {
+  display: contents;
+  margin: 0;
+}
+
+/* === Desktop layout === */
+
+/* Extracted: grid 2 columns (50/50), gap: 64px, align-items: center */
 @media (width >= 900px) {
   .hero-homepage {
-    padding: 40px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 0 32px;
+  }
+
+  .hero-homepage > div {
+    margin-bottom: 0;
+  }
+
+  /* Swap visual order: text (row 2) on left, images (row 1) on right */
+  .hero-homepage > div:first-child {
+    order: 2;
+  }
+
+  .hero-homepage > div:last-child {
+    order: 1;
+  }
+
+  /* Desktop H1: extracted 56px, line-height 61.6px */
+  .hero-homepage h1 {
+    font-size: 56px;
+    line-height: 61.6px;
+  }
+
+  /* Image grid: 2 columns for 3 images */
+
+  /* Extracted: grid-template-columns: 268px 268px, gap: 8px */
+  .hero-homepage > div:first-child > div {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-homepage img {
+    height: 179px;
   }
 }

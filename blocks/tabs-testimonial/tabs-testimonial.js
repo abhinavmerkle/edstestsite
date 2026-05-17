@@ -17,10 +17,56 @@ export default async function decorate(block) {
     tabpanel.setAttribute('aria-labelledby', `tab-${id}`);
     tabpanel.setAttribute('role', 'tabpanel');
 
+    // Get panel content cell (second div) for avatar extraction
+    const contentCell = tabpanel.children[1] || tabpanel.children[0];
+    const panelImg = contentCell ? contentCell.querySelector('img') : null;
+    const panelStrong = contentCell ? contentCell.querySelector('strong') : null;
+
+    // Find role text: the <p> after the strong's <p>
+    let roleText = '';
+    if (panelStrong) {
+      const strongP = panelStrong.closest('p');
+      const roleP = strongP ? strongP.nextElementSibling : null;
+      if (roleP && !roleP.querySelector('picture') && !roleP.querySelector('strong')) {
+        roleText = roleP.textContent;
+      }
+    }
+
     const button = document.createElement('button');
     button.className = 'tabs-testimonial-tab';
     button.id = `tab-${id}`;
-    button.innerHTML = tab.innerHTML;
+
+    // Build tab button with avatar, name, and role
+    const tabInner = document.createElement('div');
+    tabInner.className = 'tabs-testimonial-tab-inner';
+
+    if (panelImg) {
+      const avatarDiv = document.createElement('div');
+      avatarDiv.className = 'tabs-testimonial-avatar';
+      const avatarImg = document.createElement('img');
+      avatarImg.src = panelImg.src;
+      avatarImg.alt = panelImg.alt || '';
+      avatarImg.loading = 'lazy';
+      avatarDiv.append(avatarImg);
+      tabInner.append(avatarDiv);
+    }
+
+    const textDiv = document.createElement('div');
+    textDiv.className = 'tabs-testimonial-tab-text';
+    const nameDiv = document.createElement('div');
+    nameDiv.className = 'tabs-testimonial-tab-name';
+    nameDiv.textContent = tab.textContent;
+    textDiv.append(nameDiv);
+
+    if (roleText) {
+      const roleDiv = document.createElement('div');
+      roleDiv.className = 'tabs-testimonial-tab-role';
+      roleDiv.textContent = roleText;
+      textDiv.append(roleDiv);
+    }
+
+    tabInner.append(textDiv);
+    button.append(tabInner);
 
     button.setAttribute('aria-controls', `tabpanel-${id}`);
     button.setAttribute('aria-selected', !i);
@@ -40,5 +86,5 @@ export default async function decorate(block) {
     tab.remove();
   });
 
-  block.prepend(tablist);
+  block.append(tablist);
 }

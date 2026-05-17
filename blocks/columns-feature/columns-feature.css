@@ -1,10 +1,10 @@
+/* Block: columns-feature -- Featured article with image + metadata */
+
+/* Mobile-first: stack vertically */
 .columns-feature > div {
   display: flex;
   flex-direction: column;
-}
-
-.columns-feature img {
-  width: 100%;
+  gap: 24px;
 }
 
 .columns-feature > div > div {
@@ -15,19 +15,61 @@
   order: 0;
 }
 
+/* Image cell */
 .columns-feature > div > .columns-feature-img-col img {
   display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
+/* Heading */
+.columns-feature h2 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Meta paragraphs (author + date/read time) */
+.columns-feature p {
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22.4px;
+  color: rgb(102 102 102);
+  margin: 0;
+}
+
+/* First paragraph after h2 has top margin */
+.columns-feature h2 + p {
+  margin-top: 16px;
+}
+
+/* Second meta paragraph */
+.columns-feature h2 + p + p {
+  margin-top: 4px;
+}
+
+/* Desktop layout: two equal columns */
 @media (width >= 900px) {
   .columns-feature > div {
+    flex-direction: row;
     align-items: center;
-    flex-direction: unset;
     gap: 24px;
   }
 
   .columns-feature > div > div {
     flex: 1;
     order: unset;
+  }
+
+  .columns-feature h2 {
+    font-size: 40px;
+    line-height: 44px;
   }
 }

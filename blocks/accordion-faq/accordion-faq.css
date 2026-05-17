@@ -1,61 +1,170 @@
-.accordion-faq details {
-  border: 1px solid #dadada;
+/*
+ * Accordion FAQ Block
+ * Extracted from source: https://wknd-trendsetters.site .faq-list
+ *
+ * Decorated DOM structure:
+ *   .accordion-faq.block
+ *     details.accordion-faq-item
+ *       summary.accordion-faq-item-label > p
+ *       div.accordion-faq-item-body > p
+ *
+ * Section layout: two-column on desktop
+ *   .accordion-faq-container (.section)
+ *     .default-content-wrapper (h2 + subtitle)
+ *     .accordion-faq-wrapper
+ */
+
+/* === Section-level two-column layout === */
+
+/* Source: grid-template-columns: 544px 544px; gap: 64px; align-items: start; padding: 128px 0 */
+
+/* EDS section structure: .accordion-faq-container > .default-content-wrapper + .accordion-faq-wrapper */
+
+.accordion-faq-container > div {
+  max-width: var(--content-max-width);
+  margin: auto;
+  padding: 0 24px;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-.accordion-faq details + details {
-  margin-top: 24px;
+@media (width >= 900px) {
+  .accordion-faq-container {
+    padding: 128px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 64px;
+    align-items: start;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .accordion-faq-container > div {
+    max-width: none;
+    padding: 0;
+  }
 }
 
-.accordion-faq details p {
-  margin-bottom: 0.8em;
+/* === Section heading styles === */
+
+/* Source: h2 margin: 0; subtitle margin-top: 16px */
+
+.accordion-faq-container .default-content-wrapper h2 {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-.accordion-faq details summary {
-  position: relative;
-  padding: 0 16px;
-  padding-right: 46px;
+.accordion-faq-container .default-content-wrapper p {
+  margin-top: 16px;
+}
+
+/* === Block container === */
+
+/* Source: display: flex; flex-direction: column; gap: 8px */
+
+.accordion-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* === FAQ item (details element) === */
+
+/* Source: border: 1px solid rgb(232, 232, 232); border-radius: 16px */
+
+.accordion-faq .accordion-faq-item {
+  border: 1px solid rgb(232 232 232);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* === Summary / question === */
+
+/* Source: display: flex; justify-content: space-between; align-items: center;
+   padding: 24px 32px; font-size: 18px; font-weight: 600;
+   font-family: "Instrument Sans", sans-serif; line-height: 28.8px;
+   color: rgb(0, 0, 0); cursor: pointer; list-style: none */
+
+.accordion-faq .accordion-faq-item-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text-color);
   cursor: pointer;
   list-style: none;
-  overflow: auto;
+  position: relative;
   transition: background-color 0.2s;
 }
 
-.accordion-faq details[open] summary {
-  background-color: var(--light-color);
-}
-
-.accordion-faq details summary:focus,
-.accordion-faq details summary:hover {
-  background-color: var(--light-color);
-}
-
-.accordion-faq details summary::-webkit-details-marker {
+.accordion-faq .accordion-faq-item-label::-webkit-details-marker {
   display: none;
 }
 
-.accordion-faq details summary::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 18px;
-  transform: translateY(-50%) rotate(135deg);
-  width: 6px;
-  height: 6px;
-  border: 2px solid;
-  border-width: 2px 2px 0 0;
-  transition: transform 0.2s;
+/* Remove default margin on the p inside summary */
+.accordion-faq .accordion-faq-item-label p {
+  margin: 0;
 }
 
-.accordion-faq details[open] summary::after {
-  transform: translateY(-50%) rotate(-45deg);
+/* === Plus/minus icon via ::after pseudo-element === */
+
+/* Source: SVG 20x20, stroke currentColor, stroke-width 2, two lines forming a plus
+   On open: rotates 45deg to become X; transition: transform 0.3s */
+
+.accordion-faq .accordion-faq-item-label::after {
+  content: "";
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-left: 16px;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s;
 }
 
-.accordion-faq details .accordion-faq-item-body {
-  padding: 0 16px;
+.accordion-faq .accordion-faq-item[open] .accordion-faq-item-label::after {
+  transform: rotate(45deg);
 }
 
-.accordion-faq details[open] .accordion-faq-item-body {
-  border-top: 1px solid #dadada;
-  background-color: var(--background-color);
+/* === Answer body === */
+
+/* Source: padding: 0px 32px 32px; font-size: 16px; line-height: 27.2px;
+   color: rgb(64, 64, 64) */
+
+.accordion-faq .accordion-faq-item-body {
+  padding: 0 32px 32px;
+  font-size: var(--body-font-size-s);
+  line-height: 1.7;
+  color: rgb(64 64 64);
+}
+
+.accordion-faq .accordion-faq-item-body p {
+  margin: 0;
+}
+
+/* === Hover / focus states === */
+
+.accordion-faq .accordion-faq-item-label:hover,
+.accordion-faq .accordion-faq-item-label:focus {
+  background-color: var(--light-color);
+}
+
+/* === Mobile adjustments === */
+
+@media (width < 900px) {
+  .accordion-faq .accordion-faq-item-label {
+    padding: 20px 24px;
+  }
+
+  .accordion-faq .accordion-faq-item-body {
+    padding: 0 24px 24px;
+  }
 }
