@@ -1,7 +1,29 @@
-.carousel-casestudy .carousel-casestudy-slides-container {
-  position: relative;
+/* Block: carousel-casestudy -- case study horizontal carousel on black background
+   Extracted from source: https://www.merkle.com/ (.listcards.teasergallerylist.black-background) */
+
+/* === Wrapper: full-width black background === */
+.carousel-casestudy-wrapper {
+  max-width: 100% !important;
+  padding: 0 !important;
+  background-color: var(--dark-color);
 }
 
+/* === Block root === */
+.carousel-casestudy {
+  background-color: var(--dark-color);
+  color: #fff;
+  padding: 0 30px 80px;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+/* === Slides container (holds nav buttons + slides list) === */
+.carousel-casestudy .carousel-casestudy-slides-container {
+  position: relative;
+  margin: 24px 0;
+}
+
+/* === Slides list (horizontal scroll) === */
 .carousel-casestudy .carousel-casestudy-slides,
 .carousel-casestudy .carousel-casestudy-slide-indicators {
   list-style: none;
@@ -11,33 +33,33 @@
 
 .carousel-casestudy .carousel-casestudy-slides {
   display: flex;
+  gap: 20px;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  overflow: scroll clip;
+  overflow: hidden auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .carousel-casestudy .carousel-casestudy-slides::-webkit-scrollbar {
   display: none;
 }
 
+/* === Individual slide (card) === */
 .carousel-casestudy .carousel-casestudy-slide {
-  flex: 0 0 100%;
+  flex: 0 0 85%;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
   position: relative;
-  width: 100%;
-  min-height: min(50vw, calc(100dvh - var(--header-height)));
+  min-height: 400px;
+  overflow: hidden;
 }
 
-.carousel-casestudy .carousel-casestudy-slide:has(.carousel-casestudy-slide-content[data-align='center']) {
-  align-items: center;
-}
-
-.carousel-casestudy .carousel-casestudy-slide:has(.carousel-casestudy-slide-content[data-align='right']) {
-  align-items: flex-end;
+/* === Slide image: fills card, acts as background === */
+.carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-image {
+  position: absolute;
+  inset: 0;
 }
 
 .carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-image picture {
@@ -51,79 +73,127 @@
   object-fit: cover;
 }
 
+/* === Slide content: overlaid on image === */
 .carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-content {
-  z-index: 1;
-  margin: 68px;
-  padding: 16px;
-  color: white;
-  background-color: rgba(19 19 19 / 75%);
   position: relative;
-  width: var(--slide-content-width, auto);
-}
-
-.carousel-casestudy .carousel-casestudy-slide-indicators {
+  z-index: 2;
+  padding: 24px 16px;
+  color: #fff;
+  min-height: 400px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px 12px;
-  padding: 12px;
-  background-color: var(--light-color);
-  line-height: 0;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.carousel-casestudy .carousel-casestudy-slide-indicator button {
-  width: 24px;
-  height: 24px;
+/* === Company name pretitle === */
+.carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-content p:first-child {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 16px;
+  color: rgb(174 174 188);
+  text-transform: uppercase;
   margin: 0;
+}
+
+/* === Card title (h3) === */
+.carousel-casestudy h3 {
+  font-size: 21px;
+  font-weight: 700;
+  font-family: var(--body-font-family);
+  line-height: 24px;
+  color: #fff;
+  margin: 16px 0 0;
+  text-transform: none;
+}
+
+/* === "Read case" CTA link container === */
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-content p:last-child {
+  margin-top: 32px;
+}
+
+/* "Read case" link styling (plain a, not EDS .button) */
+.carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-content a:any-link {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: var(--body-font-family);
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 18px;
+  transition: opacity 0.2s;
+}
+
+.carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-content a:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+/* Arrow after "Read case" link */
+.carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-content a:any-link::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #fff;
+  border-top: 2px solid #fff;
+  transform: rotate(45deg);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* Reset EDS button styling if auto-decorated */
+.carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-content a.button:any-link {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
   padding: 0;
-  border-radius: 50%;
-  background-color: #dadada;
-  transition: background-color 0.2s;
 }
 
-.carousel-casestudy .carousel-casestudy-slide-indicator button:disabled,
-.carousel-casestudy .carousel-casestudy-slide-indicator button:hover,
-.carousel-casestudy .carousel-casestudy-slide-indicator button:focus-visible {
-  background-color: var(--text-color);
+/* === Slide indicators: hidden for this carousel variant === */
+.carousel-casestudy .carousel-casestudy-slide-indicators {
+  display: none;
 }
 
+/* === Navigation buttons === */
 .carousel-casestudy .carousel-casestudy-navigation-buttons {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 12px;
-  right: 12px;
+  bottom: -56px;
+  left: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  z-index: 1;
+  gap: 8px;
+  z-index: 3;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 .carousel-casestudy .carousel-casestudy-navigation-buttons button {
   position: relative;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   margin: 0;
-  border-radius: 50%;
   padding: 0;
-  background-color: rgba(19 19 19 / 25%);
-  transition: background-color 0.2s;
+  border: 1px solid rgb(255 255 255 / 40%);
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s;
 }
 
 .carousel-casestudy .carousel-casestudy-navigation-buttons button:hover,
 .carousel-casestudy .carousel-casestudy-navigation-buttons button:focus-visible {
-  background-color: rgba(19 19 19 / 75%);
+  border-color: #fff;
 }
 
+/* Chevron arrows on nav buttons */
 .carousel-casestudy .carousel-casestudy-navigation-buttons button::after {
   display: block;
   content: '';
-  border: 2px solid;
+  border: 2px solid #fff;
   border-bottom: 0;
   border-left: 0;
-  height: 12px;
-  width: 12px;
+  height: 10px;
+  width: 10px;
   position: absolute;
   top: 50%;
   left: calc(50% + 2px);
@@ -135,19 +205,30 @@
   left: calc(50% - 2px);
 }
 
-@media (width >= 600px) {
-  .carousel-casestudy .carousel-casestudy-navigation-buttons {
-    left: 24px;
-    right: 24px;
+/* === Responsive: desktop (900px+) === */
+@media (width >= 900px) {
+  .carousel-casestudy {
+    padding: 0 30px 80px;
+  }
+
+  .carousel-casestudy .carousel-casestudy-slide {
+    flex: 0 0 calc(33.333% - 14px);
+    min-height: 587px;
   }
 
   .carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-content {
-    --slide-content-width: calc((100% - 184px) / 2);
+    min-height: 587px;
+  }
+}
 
-    margin: 92px;
+/* === Responsive: tablet (600px-899px) === */
+@media (width >= 600px) and (width < 900px) {
+  .carousel-casestudy .carousel-casestudy-slide {
+    flex: 0 0 calc(50% - 10px);
+    min-height: 480px;
   }
 
-  .carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-content[data-align='justify'] {
-    --slide-content-width: auto;
+  .carousel-casestudy .carousel-casestudy-slide .carousel-casestudy-slide-content {
+    min-height: 480px;
   }
 }

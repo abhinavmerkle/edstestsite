@@ -1,27 +1,146 @@
+/* Block: cards-news -- Migrated from source computed styles */
+/* Source: .teasergallerylist.mer-featured-tgl on merkle.com */
+
+/* --- List container --- */
 .cards-news > ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  grid-gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+/* --- Card item --- */
 .cards-news > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  display: flex;
+  flex-direction: row;
+  background-color: var(--dark-color);
+  border-radius: 24px;
+  overflow: hidden;
+  min-height: 300px;
 }
 
-.cards-news .cards-news-card-body {
-  margin: 16px;
-}
-
+/* --- Image cell --- */
 .cards-news .cards-news-card-image {
+  flex: 0 0 40%;
+  min-width: 0;
   line-height: 0;
+  order: 1;
 }
 
-.cards-news > ul > li img {
+.cards-news .cards-news-card-image picture {
+  display: block;
+  height: 100%;
+}
+
+.cards-news .cards-news-card-image img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+/* --- Text cell --- */
+.cards-news .cards-news-card-body {
+  flex: 1 1 60%;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* --- Category tag (first p) --- */
+.cards-news .cards-news-card-body > p:first-child {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(174, 174, 188);
+  text-transform: uppercase;
+  line-height: 16px;
+  margin: 0;
+  font-family: var(--body-font-family);
+}
+
+/* --- H3 heading --- */
+.cards-news h3 {
+  font-size: 21px;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  line-height: 24px;
+  margin: 16px 0 0;
+  font-family: var(--body-font-family);
+  text-transform: none;
+}
+
+/* --- Learn more link (last p) --- */
+.cards-news .cards-news-card-body > p:last-child {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.cards-news .cards-news-card-body a:any-link {
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none;
+  font-family: var(--body-font-family);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: none;
+}
+
+.cards-news .cards-news-card-body a:any-link::after {
+  content: "\2192";
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.cards-news .cards-news-card-body a:hover::after {
+  transform: translateX(4px);
+}
+
+/* --- Hover effect on card --- */
+.cards-news > ul > li {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cards-news > ul > li:hover {
+  transform: scale(1.01);
+}
+
+/* --- Desktop layout (3-column grid) --- */
+@media (width >= 900px) {
+  .cards-news > ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px 20px;
+  }
+
+  .cards-news > ul > li {
+    flex: 1 1 calc(50% - 20px);
+    min-height: 436px;
+  }
+
+  .cards-news > ul > li:nth-child(n+2) {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-news > ul > li:first-child {
+    flex: 1 1 calc(50% - 10px);
+  }
+
+  .cards-news > ul > li:nth-child(n+2) {
+    flex: 1 1 calc(25% - 15px);
+  }
+
+  .cards-news .cards-news-card-image {
+    flex: 0 0 50%;
+  }
 }

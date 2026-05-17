@@ -1,3 +1,25 @@
+/* Block: carousel-hero -- Merkle homepage hero carousel */
+
+/* Extracted source values: bg rgb(0,0,0), text rgb(255,255,255), h2 52px/56px 400,
+   eyebrow 18px/24px 700 uppercase rgb(174,174,188), desc 18px/24px rgb(174,174,188),
+   CTA bg white, color black, padding 15px 16px, border-radius 16px, font-weight 700,
+   tabs: 2px bars, inactive rgb(174,174,188), active rgb(221,48,57) */
+
+/* === Full-width wrapper override === */
+.carousel-hero-wrapper {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* === Block root === */
+.carousel-hero {
+  background-color: rgb(0 0 0);
+  color: rgb(255 255 255);
+  position: relative;
+  overflow: hidden;
+}
+
+/* === Slides container === */
 .carousel-hero .carousel-hero-slides-container {
   position: relative;
 }
@@ -20,73 +42,191 @@
   display: none;
 }
 
+/* === Individual slide === */
 .carousel-hero .carousel-hero-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
   position: relative;
   width: 100%;
-  min-height: min(50vw, calc(100dvh - var(--header-height)));
+  min-height: 400px;
+  overflow: hidden;
 }
 
-.carousel-hero .carousel-hero-slide:has(.carousel-hero-slide-content[data-align='center']) {
-  align-items: center;
-}
-
-.carousel-hero .carousel-hero-slide:has(.carousel-hero-slide-content[data-align='right']) {
-  align-items: flex-end;
+/* === Slide image (background-style) === */
+.carousel-hero .carousel-hero-slide .carousel-hero-slide-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
 .carousel-hero .carousel-hero-slide .carousel-hero-slide-image picture {
-  position: absolute;
-  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .carousel-hero .carousel-hero-slide .carousel-hero-slide-image picture > img {
-  height: 100%;
   width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
-.carousel-hero .carousel-hero-slide .carousel-hero-slide-content {
+/* === Gradient overlay on slide image === */
+.carousel-hero .carousel-hero-slide .carousel-hero-slide-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0%) 0%, rgb(0 0 0) 100%);
+  pointer-events: none;
   z-index: 1;
-  margin: 68px;
-  padding: 16px;
-  color: white;
-  background-color: rgba(19 19 19 / 75%);
-  position: relative;
-  width: var(--slide-content-width, auto);
 }
 
+/* === Slide content (text overlay) === */
+.carousel-hero .carousel-hero-slide .carousel-hero-slide-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px 24px;
+  margin: 0;
+  background-color: transparent;
+  color: rgb(255 255 255);
+  flex: 1;
+  width: auto;
+}
+
+/* === Headings === */
+.carousel-hero h2 {
+  font-size: 28px;
+  font-weight: 400;
+  font-family: var(--body-font-family);
+  line-height: 1.08;
+  color: rgb(255 255 255);
+  margin: 0 0 16px;
+  text-transform: none;
+  max-width: 600px;
+}
+
+/* === Description paragraphs === */
+.carousel-hero .carousel-hero-slide-content p {
+  font-size: 16px;
+  font-family: var(--body-font-family);
+  line-height: 24px;
+  color: rgb(174 174 188);
+  margin: 0 0 16px;
+  max-width: 560px;
+}
+
+/* === Eyebrow paragraph (first p before h2) === */
+.carousel-hero .carousel-hero-slide-content > p:first-child:not(:has(a)) {
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--body-font-family);
+  line-height: 24px;
+  color: rgb(174 174 188);
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+/* === Links (plain, not button) === */
+.carousel-hero .carousel-hero-slide-content a:any-link {
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  background-color: rgb(255 255 255);
+  color: rgb(0 0 0);
+  padding: 12px 16px;
+  border-radius: 16px;
+  line-height: 1;
+  transition: opacity 0.2s;
+}
+
+.carousel-hero .carousel-hero-slide-content a:any-link:hover {
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+/* === CTA link containers === */
+.carousel-hero .carousel-hero-slide-content .button-container {
+  display: inline;
+}
+
+/* === Button overrides (EDS auto-decoration) === */
+main .carousel-hero a.button:any-link {
+  background-color: rgb(255 255 255);
+  color: rgb(0 0 0);
+  padding: 12px 16px;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+main .carousel-hero a.button:any-link:hover,
+main .carousel-hero a.button:any-link:focus-visible {
+  opacity: 0.85;
+  background-color: rgb(255 255 255);
+  border-color: transparent;
+}
+
+main .carousel-hero a.button.secondary:any-link {
+  background-color: transparent;
+  color: rgb(255 255 255);
+  border: 2px solid rgb(255 255 255);
+}
+
+main .carousel-hero a.button.secondary:any-link:hover,
+main .carousel-hero a.button.secondary:any-link:focus-visible {
+  background-color: rgb(255 255 255 / 10%);
+}
+
+/* === Slide indicators (tab bar) === */
 .carousel-hero .carousel-hero-slide-indicators {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px 12px;
-  padding: 12px;
-  background-color: var(--light-color);
+  gap: 8px;
+  padding: 16px 24px;
+  background-color: transparent;
   line-height: 0;
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  z-index: 3;
+}
+
+.carousel-hero .carousel-hero-slide-indicator {
+  display: flex;
+  align-items: center;
 }
 
 .carousel-hero .carousel-hero-slide-indicator button {
-  width: 24px;
-  height: 24px;
+  width: 48px;
+  height: 2px;
   margin: 0;
   padding: 0;
-  border-radius: 50%;
-  background-color: #dadada;
-  transition: background-color 0.2s;
+  border: none;
+  border-radius: 0;
+  background-color: rgb(174 174 188);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0;
+  line-height: 0;
 }
 
 .carousel-hero .carousel-hero-slide-indicator button:disabled,
 .carousel-hero .carousel-hero-slide-indicator button:hover,
 .carousel-hero .carousel-hero-slide-indicator button:focus-visible {
-  background-color: var(--text-color);
+  background-color: rgb(221 48 57);
 }
 
+/* === Navigation arrows === */
 .carousel-hero .carousel-hero-navigation-buttons {
   position: absolute;
   top: 50%;
@@ -96,7 +236,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 3;
+  pointer-events: none;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -106,24 +247,27 @@
   height: 44px;
   margin: 0;
   border-radius: 50%;
+  border: none;
   padding: 0;
-  background-color: rgba(19 19 19 / 25%);
+  background-color: rgb(255 255 255 / 15%);
   transition: background-color 0.2s;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .carousel-hero .carousel-hero-navigation-buttons button:hover,
 .carousel-hero .carousel-hero-navigation-buttons button:focus-visible {
-  background-color: rgba(19 19 19 / 75%);
+  background-color: rgb(255 255 255 / 30%);
 }
 
 .carousel-hero .carousel-hero-navigation-buttons button::after {
   display: block;
   content: '';
-  border: 2px solid;
+  border: 2px solid rgb(255 255 255);
   border-bottom: 0;
   border-left: 0;
-  height: 12px;
-  width: 12px;
+  height: 10px;
+  width: 10px;
   position: absolute;
   top: 50%;
   left: calc(50% + 2px);
@@ -135,19 +279,58 @@
   left: calc(50% - 2px);
 }
 
-@media (width >= 600px) {
+/* === Desktop layout (>= 900px) === */
+@media (width >= 900px) {
+  .carousel-hero .carousel-hero-slide {
+    min-height: 552px;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .carousel-hero .carousel-hero-slide .carousel-hero-slide-image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .carousel-hero .carousel-hero-slide .carousel-hero-slide-content {
+    padding: 80px 64px;
+    max-width: 50%;
+    justify-content: center;
+  }
+
+  .carousel-hero h2 {
+    font-size: 52px;
+    line-height: 56px;
+    margin: 0 0 16px;
+  }
+
+  .carousel-hero .carousel-hero-slide-content p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .carousel-hero .carousel-hero-slide-content > p:first-child:not(:has(a)) {
+    font-size: 18px;
+  }
+
+  .carousel-hero .carousel-hero-slide-content a:any-link {
+    font-size: 18px;
+    padding: 15px 16px;
+  }
+
+  main .carousel-hero a.button:any-link {
+    font-size: 18px;
+    padding: 15px 16px;
+  }
+
   .carousel-hero .carousel-hero-navigation-buttons {
     left: 24px;
     right: 24px;
   }
 
-  .carousel-hero .carousel-hero-slide .carousel-hero-slide-content {
-    --slide-content-width: calc((100% - 184px) / 2);
-
-    margin: 92px;
-  }
-
-  .carousel-hero .carousel-hero-slide .carousel-hero-slide-content[data-align='justify'] {
-    --slide-content-width: auto;
+  .carousel-hero .carousel-hero-slide-indicators {
+    padding: 16px 64px;
+    bottom: 24px;
+    left: 48px;
   }
 }
