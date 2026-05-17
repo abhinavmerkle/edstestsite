@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-homepage",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-05-17T06:52:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd-trendsetters.site",
+    "originPage": "fashion blog homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "homepage-hero",
+    "imagePattern": "multi-image"
+  },
+  "contentPattern": {
+    "structure": "heading + subheading + 2 CTAs + 3 images",
+    "buttonCount": 2,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage landing sections",
+      "content-heavy hero areas with multiple images",
+      "blog or magazine homepage intros"
+    ],
+    "notSuitableFor": [
+      "hero sections with single background image",
+      "dark overlay banner-style heroes",
+      "minimal text-only heroes"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-17T06:52:00.000Z"
+  }
+}

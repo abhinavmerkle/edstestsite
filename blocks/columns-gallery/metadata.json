@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-gallery",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-05-17T06:52:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd-trendsetters.site",
+    "originPage": "fashion blog homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "grey",
+    "density": "compact",
+    "purpose": "photo-gallery",
+    "imagePattern": "multi-image"
+  },
+  "contentPattern": {
+    "structure": "4-column grid of square images across 2 rows",
+    "buttonCount": 0,
+    "imageCount": 8
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "photo gallery grids",
+      "image-only multi-column layouts",
+      "portfolio or lookbook displays"
+    ],
+    "notSuitableFor": [
+      "text-heavy column layouts",
+      "two-column content sections",
+      "layouts requiring text alongside images"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-17T06:52:00.000Z"
+  }
+}
