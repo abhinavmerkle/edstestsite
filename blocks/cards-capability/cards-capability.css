@@ -1,42 +1,38 @@
-/* Block: cards-capability -- extracted from source computed styles */
-
-/* Source values: bg rgb(0,0,0), text rgb(255,255,255), h6 21px/24px 700, p 18px/24px 400 */
-
-/* Card width: 25% (360/1440), image 360x243, text padding 0 30px, gap 0 */
-
-/*
- * The section contains 4 separate cards-capability blocks among other blocks.
- * Each block has 1 card (ul > li) after JS decoration.
- * Wrappers are direct children of the section, so we use inline-block
- * to make them sit side by side without affecting other section children.
- */
-
-/* --- Wrapper: each block wrapper is a column --- */
 .cards-capability-wrapper {
-  box-sizing: border-box;
-  width: 100%;
-  vertical-align: top;
   background-color: rgb(0 0 0);
 }
 
-/* --- Block root --- */
 .cards-capability {
   color: rgb(255 255 255);
 }
 
-/* --- List reset (JS converts rows to ul > li) --- */
 .cards-capability > ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (width >= 600px) {
+  .cards-capability > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-capability > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .cards-capability > ul > li {
   border: none;
   background-color: transparent;
+  text-align: center;
 }
 
-/* --- Card image --- */
 .cards-capability .cards-capability-card-image {
   line-height: 0;
   text-align: center;
@@ -45,18 +41,15 @@
 
 .cards-capability > ul > li img {
   width: 100%;
+  max-width: 200px;
   aspect-ratio: 360 / 243;
   object-fit: contain;
 }
 
-/* --- Card body (text container) --- */
 .cards-capability .cards-capability-card-body {
   padding: 0 30px 30px;
 }
 
-/* --- H6 heading: source uses proxima-nova (body font), not heading font --- */
-
-/* Override global heading styles that set uppercase + heading font family */
 .cards-capability h6 {
   font-size: 21px;
   font-weight: 700;
@@ -68,7 +61,6 @@
   margin: 32px 0 16px;
 }
 
-/* --- Paragraph --- */
 .cards-capability p {
   font-size: var(--body-font-size-m);
   font-family: var(--body-font-family);
@@ -76,20 +68,4 @@
   line-height: 24px;
   color: rgb(255 255 255);
   margin: 0 0 16px;
-}
-
-/* --- Desktop: 4 columns side by side --- */
-@media (width >= 900px) {
-  .cards-capability-wrapper {
-    display: inline-block;
-    width: 25%;
-  }
-}
-
-/* --- Tablet: 2 columns --- */
-@media (width >= 600px) and (width < 900px) {
-  .cards-capability-wrapper {
-    display: inline-block;
-    width: 50%;
-  }
 }
