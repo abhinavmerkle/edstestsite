@@ -1,4 +1,5 @@
 /* Block: cards-news -- Migrated from source computed styles */
+
 /* Source: .teasergallerylist.mer-featured-tgl on merkle.com */
 
 /* --- List container --- */
@@ -19,6 +20,8 @@
   border-radius: 24px;
   overflow: hidden;
   min-height: 300px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 /* --- Image cell --- */
@@ -54,7 +57,7 @@
 .cards-news .cards-news-card-body > p:first-child {
   font-size: 15px;
   font-weight: 700;
-  color: rgb(174, 174, 188);
+  color: rgb(174 174 188);
   text-transform: uppercase;
   line-height: 16px;
   margin: 0;
@@ -65,7 +68,7 @@
 .cards-news h3 {
   font-size: 21px;
   font-weight: 700;
-  color: rgb(255, 255, 255);
+  color: rgb(255 255 255);
   line-height: 24px;
   margin: 16px 0 0;
   font-family: var(--body-font-family);
@@ -79,7 +82,7 @@
 }
 
 .cards-news .cards-news-card-body a:any-link {
-  color: rgb(255, 255, 255);
+  color: rgb(255 255 255);
   font-size: 18px;
   font-weight: 400;
   text-decoration: none;
@@ -103,12 +106,6 @@
   transform: translateX(4px);
 }
 
-/* --- Hover effect on card --- */
-.cards-news > ul > li {
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
 .cards-news > ul > li:hover {
   transform: scale(1.01);
 }
@@ -116,8 +113,7 @@
 /* --- Desktop layout (3-column grid) --- */
 @media (width >= 900px) {
   .cards-news > ul {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: 32px 20px;
   }
 
