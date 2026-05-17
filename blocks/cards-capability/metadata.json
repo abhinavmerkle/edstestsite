@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-capability",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-05-17T10:50:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.merkle.com/",
+    "originPage": "Merkle corporate homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "capability-features",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "icon-image + heading + description per card",
+    "buttonCount": 0,
+    "imageCount": 4
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "capability or service offering displays",
+      "feature highlights with icon imagery",
+      "dark background 4-column capability grids"
+    ],
+    "notSuitableFor": [
+      "photo-heavy article or news card grids",
+      "light background feature lists",
+      "cards with CTA buttons or links"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-17T10:50:00.000Z"
+  }
+}

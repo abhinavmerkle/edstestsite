@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-hero",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-05-17T10:50:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.merkle.com/",
+    "originPage": "Merkle corporate homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero-carousel",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + optional-eyebrow + heading + optional-description + CTAs per slide",
+    "buttonCount": 2,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage hero carousels with multiple featured slides",
+      "full-bleed dark background rotating hero banners",
+      "hero sections with tabbed slide indicators"
+    ],
+    "notSuitableFor": [
+      "image-only galleries or slideshows",
+      "light background carousels",
+      "card-style horizontal scrolling carousels"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-17T10:50:00.000Z"
+  }
+}

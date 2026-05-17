@@ -1,0 +1,39 @@
+{
+  "variantName": "video-featured",
+  "baseBlock": "video",
+  "version": "1.0.0",
+  "created": "2026-05-17T10:50:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.merkle.com/",
+    "originPage": "Merkle corporate homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "featured-video",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "poster-image + video-url",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "centered featured video with poster image",
+      "brand sizzle reel or promotional video",
+      "dark section embedded video players"
+    ],
+    "notSuitableFor": [
+      "background ambient video loops",
+      "inline video within text content",
+      "video galleries or multiple video grids"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-17T10:50:00.000Z"
+  }
+}

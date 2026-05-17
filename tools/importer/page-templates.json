@@ -134,6 +134,97 @@
           "defaultContent": []
         }
       ]
+    },
+    {
+      "name": "merkle-homepage",
+      "urls": [
+        "https://www.merkle.com/"
+      ],
+      "description": "Merkle corporate homepage with hero carousel, news cards, capability cards, video, and case study carousel",
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": [
+            ".teasercarousel.carousel"
+          ]
+        },
+        {
+          "name": "cards-news",
+          "instances": [
+            ".teasergallerylist.mer-featured-tgl"
+          ]
+        },
+        {
+          "name": "cards-capability",
+          "instances": [
+            ".aem-Grid.aem-Grid--3"
+          ]
+        },
+        {
+          "name": "video-featured",
+          "instances": [
+            ".cmp-video"
+          ]
+        },
+        {
+          "name": "carousel-casestudy",
+          "instances": [
+            ".listcards.teasergallerylist.black-background"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "merkle-section-1",
+          "name": "Hero Carousel",
+          "selector": ".teasercarousel.carousel",
+          "style": null,
+          "blocks": [
+            "carousel-hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "merkle-section-2",
+          "name": "Latest and Greatest",
+          "selector": ".teasergallerylist.mer-featured-tgl",
+          "style": null,
+          "blocks": [
+            "cards-news"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "merkle-section-3",
+          "name": "Experience Economy",
+          "selector": ".container.responsivegrid:has(.aem-Grid--3)",
+          "style": "dark",
+          "blocks": [
+            "cards-capability"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "merkle-section-4",
+          "name": "Partnering with Brands",
+          "selector": ".cmp-video",
+          "style": "dark",
+          "blocks": [
+            "video-featured"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "merkle-section-5",
+          "name": "Our Work in Action",
+          "selector": ".listcards.teasergallerylist.black-background",
+          "style": "dark",
+          "blocks": [
+            "carousel-casestudy"
+          ],
+          "defaultContent": []
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-news",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-05-17T10:50:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.merkle.com/",
+    "originPage": "Merkle corporate homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "news-listing",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + category-tag + title + learn-more-link per card",
+    "buttonCount": 0,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "news or press release listings",
+      "featured content cards with category labels",
+      "event recap and ebook promotion grids"
+    ],
+    "notSuitableFor": [
+      "icon-based capability or feature cards",
+      "dark background card grids",
+      "cards without images"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-17T10:50:00.000Z"
+  }
+}
